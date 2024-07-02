@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+           attributeFormDefault="unqualified">
+    <xs:element name="informazioniAnagrafiche">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Assistito" minOccurs="1" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="TipoTrasmissione" type="TipoTrasmissione"/>
+                            <xs:element name="IdAssistito" type="IdAssistito"/>
+                            <xs:element name="ValiditaCI" type="ValiditaCI"/>
+                            <xs:element name="TipologiaCI" type="TipologiaCI"/>
+                            <xs:element name="Sesso" type="Sesso"/>
+                            <xs:element name="DataNascita" type="xs:date"/>
+                            <xs:element name="ComuneResidenza" type="ComuneResidenza"/>
+                            <xs:element name="AslResidenza" type="AslResidenza"/>
+                            <xs:element name="RegioneResidenza" type="CodiceRegioneResidenza"/>
+                            <xs:element name="StatoEsteroResidenza" type="StatoEsteroResidenza"/>
+                            <xs:element name="DataTrasferimentoResidenza" type="xs:date" minOccurs="0"/>
+                            <xs:element name="ComuneDomicilio" type="ComuneDomicilio" minOccurs="0"/>
+                            <xs:element name="AslDomicilio" type="AslDomicilio" minOccurs="0"/>
+                            <xs:element name="RegioneDomicilio" type="CodiceRegioneDomicilio" minOccurs="0"/>
+                            <xs:element name="Cittadinanza" type="Cittadinanza"/>
+                            <xs:element name="DataDecesso" type="xs:date" minOccurs="0"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="CodiceRegione" type="CodiceRegione" use="required"/>
+            <xs:attribute name="Modalita" type="Modalita" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:simpleType name="Modalita">
+        <xs:restriction base="xs:string">
+            <xs:length value="2"/>
+            <xs:enumeration value="RE"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="TipoTrasmissione">
+        <xs:restriction base="xs:string">
+            <xs:length value="1"/>
+            <xs:enumeration value="I"/>
+            <xs:enumeration value="C"/>
+            <xs:enumeration value="V"/>
+            <xs:enumeration value="i"/>
+            <xs:enumeration value="c"/>
+            <xs:enumeration value="v"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="CodiceRegione">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="010"/>
+            <xs:enumeration value="020"/>
+            <xs:enumeration value="030"/>
+            <xs:enumeration value="041"/>
+            <xs:enumeration value="042"/>
+            <xs:enumeration value="050"/>
+            <xs:enumeration value="060"/>
+            <xs:enumeration value="070"/>
+            <xs:enumeration value="080"/>
+            <xs:enumeration value="090"/>
+            <xs:enumeration value="100"/>
+            <xs:enumeration value="110"/>
+            <xs:enumeration value="120"/>
+            <xs:enumeration value="130"/>
+            <xs:enumeration value="140"/>
+            <xs:enumeration value="150"/>
+            <xs:enumeration value="160"/>
+            <xs:enumeration value="170"/>
+            <xs:enumeration value="180"/>
+            <xs:enumeration value="190"/>
+            <xs:enumeration value="200"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="IdAssistito">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[a-zA-Z0-9+/=]{172}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="ValiditaCI">
+        <xs:restriction base="xs:integer">
+            <xs:pattern value="[0-1]{1}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="TipologiaCI">
+        <xs:restriction base="xs:integer">
+            <xs:enumeration value="0"/>
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+            <xs:enumeration value="3"/>
+            <xs:enumeration value="4"/>
+            <xs:enumeration value="99"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Sesso">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+            <xs:enumeration value="9"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="ComuneResidenza">
+        <xs:restriction base="xs:string">
+            <xs:length value="6"/>
+            <xs:pattern value="[0-9]{6}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="AslResidenza">
+        <xs:restriction base="xs:string">
+            <xs:length value="3"/>
+            <xs:pattern value="[0-9]{3}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="CodiceRegioneResidenza">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="010"/>
+            <xs:enumeration value="020"/>
+            <xs:enumeration value="030"/>
+            <xs:enumeration value="041"/>
+            <xs:enumeration value="042"/>
+            <xs:enumeration value="050"/>
+            <xs:enumeration value="060"/>
+            <xs:enumeration value="070"/>
+            <xs:enumeration value="080"/>
+            <xs:enumeration value="090"/>
+            <xs:enumeration value="100"/>
+            <xs:enumeration value="110"/>
+            <xs:enumeration value="120"/>
+            <xs:enumeration value="130"/>
+            <xs:enumeration value="140"/>
+            <xs:enumeration value="150"/>
+            <xs:enumeration value="160"/>
+            <xs:enumeration value="170"/>
+            <xs:enumeration value="180"/>
+            <xs:enumeration value="190"/>
+            <xs:enumeration value="200"/>
+            <xs:enumeration value="999"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StatoEsteroResidenza">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z]{2}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="ComuneDomicilio">
+        <xs:restriction base="xs:string">
+            <xs:length value="6"/>
+            <xs:pattern value="[0-9]{6}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="AslDomicilio">
+        <xs:restriction base="xs:string">
+            <xs:length value="3"/>
+            <xs:pattern value="[0-9]{3}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="CodiceRegioneDomicilio">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="010"/>
+            <xs:enumeration value="020"/>
+            <xs:enumeration value="030"/>
+            <xs:enumeration value="041"/>
+            <xs:enumeration value="042"/>
+            <xs:enumeration value="050"/>
+            <xs:enumeration value="060"/>
+            <xs:enumeration value="070"/>
+            <xs:enumeration value="080"/>
+            <xs:enumeration value="090"/>
+            <xs:enumeration value="100"/>
+            <xs:enumeration value="110"/>
+            <xs:enumeration value="120"/>
+            <xs:enumeration value="130"/>
+            <xs:enumeration value="140"/>
+            <xs:enumeration value="150"/>
+            <xs:enumeration value="160"/>
+            <xs:enumeration value="170"/>
+            <xs:enumeration value="180"/>
+            <xs:enumeration value="190"/>
+            <xs:enumeration value="200"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Cittadinanza">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z]{2}"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
